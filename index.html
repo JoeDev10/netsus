@@ -4,6 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Netsus — Venta y Reparación de Celulares</title>
+  <meta name="description" content="Netsus: venta de celulares nuevos y reacondicionados, reparaciones express con garantía y repuestos originales. Más de 10 años de experiencia. Diagnóstico gratuito." />
+  <meta name="theme-color" content="#8b5cf6" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="Netsus — Venta y Reparación de Celulares" />
+  <meta property="og:description" content="Celulares nuevos y reacondicionados, reparaciones express con garantía. Diagnóstico gratuito. Más de 5.000 clientes satisfechos." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://netsus.vercel.app" />
+  <meta property="og:locale" content="es_AR" />
+  <!-- Favicon SVG inline -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%238b5cf6'/><text y='.9em' font-size='72' x='12'>📱</text></svg>" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -322,6 +332,15 @@
     .phone-spec { font-size: 13px; color: var(--text-d); margin-bottom: 14px; }
     .phone-price { font-size: 22px; font-weight: 800; color: var(--text); }
     .phone-price span { font-size: 13px; font-weight: 400; color: var(--text-d); }
+    .phone-price-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-top: 4px; }
+    .phone-wa-btn {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(37,211,102,.12); border: 1px solid rgba(37,211,102,.3);
+      color: #4ade80; border-radius: 8px; padding: 7px 12px;
+      font-size: 12px; font-weight: 600; text-decoration: none;
+      transition: all .2s; white-space: nowrap; flex-shrink: 0;
+    }
+    .phone-wa-btn:hover { background: rgba(37,211,102,.22); color: #fff; }
 
     /* ─── CÓMO FUNCIONA ─────────────────────────────────────── */
     #como-funciona { background: var(--bg-2); }
@@ -575,6 +594,63 @@
     @media (max-width: 1024px) { .precios-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 640px)  { .precios-grid { grid-template-columns: 1fr; } }
 
+    /* ─── FAQ ───────────────────────────────────────────────── */
+    #faq { background: var(--bg); }
+    #faq .section-header { text-align: center; margin-bottom: 52px; }
+    #faq .section-header .section-sub { margin: 0 auto; }
+
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--bg-2); border: 1px solid var(--border);
+      border-radius: var(--radius-l); overflow: hidden; transition: border-color .2s;
+    }
+    .faq-item.open { border-color: var(--border-l); }
+    .faq-question {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; padding: 22px 24px;
+      font-family: inherit; font-size: 15px; font-weight: 600;
+      color: var(--text); text-align: left;
+    }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+      background: rgba(139,92,246,.12); border: 1px solid var(--border-l);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--violet); font-size: 16px; transition: transform .3s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      max-height: 0; overflow: hidden; transition: max-height .35s ease, padding .25s;
+      font-size: 14px; color: var(--text-m); line-height: 1.7;
+      padding: 0 24px;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 24px 22px; }
+
+    /* ─── Mapa ───────────────────────────────────────────────── */
+    .mapa-wrap {
+      border-radius: var(--radius-l); overflow: hidden;
+      border: 1px solid var(--border); margin-top: 36px;
+      height: 260px;
+    }
+    .mapa-wrap iframe { width: 100%; height: 100%; border: none; display: block; }
+
+    /* ─── Mobile fixes ───────────────────────────────────────── */
+    @media (max-width: 768px) {
+      .precio-card { padding: 22px 18px; }
+      .precio-range { font-size: 19px; }
+      .precio-cta { padding: 8px 12px; font-size: 12px; }
+      .wa-float { bottom: 18px; right: 18px; }
+      .wa-bubble { width: 52px; height: 52px; }
+      .faq-question { font-size: 14px; padding: 18px 16px; }
+      .faq-answer { padding: 0 16px; }
+      .faq-item.open .faq-answer { padding: 0 16px 18px; }
+      .precio-nota { flex-direction: column; text-align: center; padding: 18px; }
+    }
+    @media (max-width: 480px) {
+      .phone-price-row { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .phone-wa-btn { width: 100%; justify-content: center; }
+    }
+
     /* ─── WhatsApp Flotante ─────────────────────────────────── */
     .wa-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 999;
@@ -676,6 +752,7 @@
         <li><a href="#celulares">Celulares</a></li>
         <li><a href="#reparaciones">Reparaciones</a></li>
         <li><a href="#precios">Precios</a></li>
+        <li><a href="#faq">FAQ</a></li>
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#contacto">Contacto</a></li>
         <li style="margin-left:8px">
@@ -797,98 +874,106 @@
       <div class="phones-grid" id="phonesGrid">
 
         <div class="phone-card-item fade-in" data-brand="apple">
-          <div class="phone-img">📱
-            <span class="badge badge-new">Nuevo</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-new">Nuevo</span></div>
           <div class="phone-info">
             <div class="phone-brand">Apple</div>
             <div class="phone-name">iPhone 15</div>
             <div class="phone-spec">128 GB · Negro</div>
-            <div class="phone-price">$1.299.999 <span>/ en 12 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$1.299.999 <span>/ 12 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20iPhone%2015" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="samsung" style="transition-delay:.08s">
-          <div class="phone-img">📱
-            <span class="badge badge-new">Nuevo</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-new">Nuevo</span></div>
           <div class="phone-info">
             <div class="phone-brand">Samsung</div>
             <div class="phone-name">Galaxy S24</div>
             <div class="phone-spec">256 GB · Violeta</div>
-            <div class="phone-price">$1.149.999 <span>/ en 12 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$1.149.999 <span>/ 12 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Galaxy%20S24" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="motorola" style="transition-delay:.16s">
-          <div class="phone-img">📱
-            <span class="badge badge-new">Nuevo</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-new">Nuevo</span></div>
           <div class="phone-info">
             <div class="phone-brand">Motorola</div>
             <div class="phone-name">Edge 50 Pro</div>
             <div class="phone-spec">512 GB · Negro</div>
-            <div class="phone-price">$849.999 <span>/ en 12 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$849.999 <span>/ 12 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Motorola%20Edge%2050%20Pro" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="xiaomi" style="transition-delay:.24s">
-          <div class="phone-img">📱
-            <span class="badge badge-new">Nuevo</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-new">Nuevo</span></div>
           <div class="phone-info">
             <div class="phone-brand">Xiaomi</div>
             <div class="phone-name">14T Pro</div>
             <div class="phone-spec">256 GB · Titanio</div>
-            <div class="phone-price">$749.999 <span>/ en 12 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$749.999 <span>/ 12 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Xiaomi%2014T%20Pro" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="apple" style="transition-delay:.08s">
-          <div class="phone-img">📱
-            <span class="badge badge-used">Reacond.</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-used">Reacond.</span></div>
           <div class="phone-info">
             <div class="phone-brand">Apple</div>
             <div class="phone-name">iPhone 13</div>
             <div class="phone-spec">128 GB · Azul · Grado A</div>
-            <div class="phone-price">$699.999 <span>/ en 6 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$699.999 <span>/ 6 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20iPhone%2013%20reacondicionado" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="samsung" style="transition-delay:.16s">
-          <div class="phone-img">📱
-            <span class="badge badge-used">Reacond.</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-used">Reacond.</span></div>
           <div class="phone-info">
             <div class="phone-brand">Samsung</div>
             <div class="phone-name">Galaxy A55</div>
             <div class="phone-spec">128 GB · Negro · Grado A</div>
-            <div class="phone-price">$429.999 <span>/ en 6 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$429.999 <span>/ 6 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Galaxy%20A55%20reacondicionado" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="motorola" style="transition-delay:.24s">
-          <div class="phone-img">📱
-            <span class="badge badge-used">Reacond.</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-used">Reacond.</span></div>
           <div class="phone-info">
             <div class="phone-brand">Motorola</div>
             <div class="phone-name">Moto G84</div>
             <div class="phone-spec">256 GB · Grafito · Grado A</div>
-            <div class="phone-price">$329.999 <span>/ en 6 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$329.999 <span>/ 6 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Moto%20G84%20reacondicionado" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
         <div class="phone-card-item fade-in" data-brand="xiaomi" style="transition-delay:.32s">
-          <div class="phone-img">📱
-            <span class="badge badge-used">Reacond.</span>
-          </div>
+          <div class="phone-img">📱<span class="badge badge-used">Reacond.</span></div>
           <div class="phone-info">
             <div class="phone-brand">Xiaomi</div>
             <div class="phone-name">Redmi Note 13</div>
             <div class="phone-spec">256 GB · Lavanda · Grado A</div>
-            <div class="phone-price">$279.999 <span>/ en 6 cuotas</span></div>
+            <div class="phone-price-row">
+              <div class="phone-price">$279.999 <span>/ 6 cuotas</span></div>
+              <a class="phone-wa-btn" href="https://wa.me/5491100000000?text=Hola!%20Me%20interesa%20el%20Redmi%20Note%2013%20reacondicionado" target="_blank">💬 Consultar</a>
+            </div>
           </div>
         </div>
 
@@ -1301,6 +1386,13 @@
           </div>
         </div>
 
+        <div class="mapa-wrap fade-in">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.016864985397!2d-58.38522182346642!3d-34.60373735707236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccac630121623%3A0x53386f2ac88991a9!2sAv.%20Corrientes%201234%2C%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1716000000000!5m2!1ses!2sar"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación Netsus">
+          </iframe>
+        </div>
+
         <div class="contact-form fade-in" style="transition-delay:.15s">
           <h3>Pedí un turno</h3>
           <form id="contactForm" novalidate>
@@ -1387,6 +1479,68 @@
     </div>
   </footer>
 
+  <!-- ─── FAQ ──────────────────────────────────────────────────── -->
+  <section id="faq">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="tag">FAQ</span>
+        <h2 class="section-title" style="margin-top:20px">Preguntas frecuentes</h2>
+        <p class="section-sub">Las dudas más comunes de nuestros clientes, respondidas.</p>
+      </div>
+      <div class="faq-list fade-in">
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿Cuánto tarda una reparación?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">La mayoría de las reparaciones —como cambio de pantalla o batería— se realizan en menos de 2 horas. En casos de daño por agua o reparaciones de placa, puede llevar entre 4 y 6 horas. Siempre te avisamos antes de empezar.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿El diagnóstico tiene costo?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">No, el diagnóstico es siempre gratuito y sin compromiso. Si decidís no reparar, podés retirar tu equipo sin pagar nada.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿Qué garantía tienen las reparaciones?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Todas las reparaciones tienen 6 meses de garantía escrita sobre el repuesto y la mano de obra. Si algo falla en ese período relacionado con la reparación, lo solucionamos sin costo.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿Los celulares reacondicionados son confiables?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sí. Todos los equipos reacondicionados pasan por un proceso de revisión completa: pantalla, batería, cámaras, altavoces y conectores. Solo vendemos equipos en Grado A, que lucen y funcionan como nuevos.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿Puedo pagar en cuotas?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sí, aceptamos todas las tarjetas de crédito principales. Los celulares nuevos se pueden financiar hasta en 12 cuotas y los reacondicionados hasta en 6 cuotas. Consultar promociones vigentes.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question">
+            ¿Hacen envíos?
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">Sí, enviamos a todo el país por correo o mensajería privada con seguro y número de seguimiento. También podés enviarnos tu equipo para reparación y te lo devolvemos a domicilio.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- ─── WhatsApp Flotante ───────────────────────────────────── -->
   <a class="wa-float" href="https://wa.me/5491100000000?text=Hola!%20Quisiera%20hacer%20una%20consulta%20%F0%9F%98%8A" target="_blank" rel="noopener" aria-label="Escribinos por WhatsApp">
     <span class="wa-label">Escribinos por WhatsApp</span>
@@ -1423,6 +1577,16 @@
           const show = filter === 'all' || card.dataset.brand === filter;
           card.style.display = show ? '' : 'none';
         });
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
       });
     });
 
